@@ -1,0 +1,147 @@
+/* ============================
+   (1) Tu CSS original...
+      :root {
+  --primary-color: #e4e1d7;
+  --primary-color-hover: #d8d5cb;
+}
+
+   ============================ */
+
+   :root {
+  --primary-color: #F3F3F3;
+  --primary-color-hover: #ef654d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+   html, body, #root { height: 100%; }
+   
+   .app-container { 
+     display: flex; 
+     flex-direction: column; 
+     height: 100vh;
+     width: 100vw;
+     overflow: hidden;
+   }
+   
+   .navbar {
+     display: grid;
+     grid-template-columns: repeat(6, 1fr);
+     grid-template-rows: repeat(2, 1fr);
+     width: 100%;
+     background: var(--primary-color);
+     padding: 10px;
+     gap: 10px;
+   }
+   
+   .nav-button {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+     font-weight: bold;
+     min-height: 60px;
+   
+     background: var(--primary-color);
+     border-radius: 16px;
+     border: none;
+     padding: 0.6em 1.2em;
+     cursor: pointer;
+   
+     box-shadow:
+       5px 5px 10px rgba(0, 0, 0, 0.1),
+       -5px -5px 10px rgba(255, 255, 255, 0.8);
+   
+     transition: 
+       background 0.3s ease,
+       box-shadow 0.3s ease;
+   }
+   
+   .nav-button:hover,
+   .nav-button.active {
+     background: var(--primary-color-hover);
+     box-shadow:
+       inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+       inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+   }
+   
+   .content {
+     flex: 1;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden;
+     background: var(--primary-color);
+     padding: 20px;
+   }
+   
+   .home-container {
+     width: 100vw;
+     height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+   }
+   
+   .home-image {
+     width: 100%;
+     height: 100%;
+     object-fit: fill;
+     display: block;
+     border-radius: 8px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   }
+   
+   /* =======================================
+      (2) Media queries para móvil / tablet
+      ======================================= */
+   @media (max-width: 768px) {
+     /* Imagen: conserva sus dimensiones reales */
+     .home-image {
+       width: auto  !important;
+       height: auto !important;
+       max-width: 100%;
+       max-height: 100%;
+       object-fit: contain !important;
+     }
+   
+     /* Navbar → menú desplegable */
+     .navbar {
+       display: block;
+       position: relative;
+     }
+   
+     /* Icono de hamburguesa */
+     .menu-toggle {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-size: 1.6rem;
+       cursor: pointer;
+     }
+   
+     /* Ocultamos las opciones por defecto */
+     .navbar .nav-button {
+       display: none;
+       width: 100%;
+       margin-top: 8px;
+     }
+   
+     /* Al abrir (.open) mostramos los botones en bloque */
+     .navbar.open .nav-button {
+       display: flex;
+     }
+   
+     /* Ajustamos grid-column / rows si fuera necesario */
+   }
+   
+   /* Ocultamos el toggle en pantallas grandes */
+   @media (min-width: 769px) {
+     .menu-toggle {
+       display: none;
+     }
+   }
+   
