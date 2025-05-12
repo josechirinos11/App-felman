@@ -15,6 +15,7 @@ import PedidosFelmanVidrio from './pages/PedidosFelmanVidrio';
 import EnsayosCalidadPVC from './pages/EnsayosCalidadPVC';
 import InformeDeVidrios from './pages/InformeDeVidrios';
 import Clientes from './pages/Clientes';
+import Settings from './pages/Settings';
 
 const menuItems = [
   { label: 'Control de Pedidos', path: '/control-de-pedidos' },
@@ -48,9 +49,11 @@ function App() {
             <Route path="/pedidos-a-proveedores" element={<PedidosAProveedores />} />
             <Route path="/pedidos-felman-aluminio" element={<PedidosFelmanAluminio />} />
             <Route path="/pedidos-felman-vidrio" element={<PedidosFelmanVidrio />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/ensayos-calidad-pvc" element={<EnsayosCalidadPVC />} />
             <Route path="/informe-de-vidrios" element={<InformeDeVidrios />} />
             <Route path="/clientes" element={<Clientes />} />
+
           </Routes>
         </div>
       </div>

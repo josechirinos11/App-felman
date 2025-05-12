@@ -10,7 +10,7 @@ export default function PageTemplate({ title }) {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>{title}</h1>
+      <h1 style={{ color: '#ef654d' }}>{title}</h1>
       <SearchBar filter={filter} setFilter={setFilter} />
       <CardList filter={filter} onCardClick={setSelectedItem} />
       {selectedItem && <CardModal item={selectedItem} onClose={() => setSelectedItem(null)} />}

@@ -23,7 +23,15 @@
     },
     "files": [
       "main.js",
+      "preload.js",
       "../frontend/dist/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "resources",
+        "to": "biblioteca",
+        "filter": ["**/*"]
+      }
     ]
   },
   "devDependencies": {

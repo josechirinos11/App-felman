@@ -13,25 +13,30 @@ export default function NavBar({ items }) {
   };
 
   return (
-    <nav className={`navbar ${open ? 'open' : ''}`}>
-      <div
-        className="menu-toggle"
-        onClick={() => setOpen(o => !o)}
-      >
+    <nav className={`navbar ${open ? 'open' : ''}`} style={{ display: 'flex', alignItems: 'stretch', width: '100%' }}>
+      <div className="menu-toggle" onClick={() => setOpen(o => !o)}>
         {open ? '✕' : '☰'}
       </div>
-
-      {items.map(item => (
+      <div className="nav-buttons-grid" style={{ flex: 9 }}>
+        {items.map(item => (
+          <div
+            key={item.path}
+            className={`nav-button ${location.pathname === item.path ? 'active' : ''}`}
+            onClick={() => handleClick(item.path)}
+          >
+            {item.label}
+          </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%' }}>
         <div
-          key={item.path}
-          className={`nav-button ${
-            location.pathname === item.path ? 'active' : ''
-          }`}
-          onClick={() => handleClick(item.path)}
+          className={`nav-button settings-button ${location.pathname === '/settings' ? 'active' : ''}`}
+          onClick={() => handleClick('/settings')}
+          title="Configuración"
         >
-          {item.label}
+          ⚙️
         </div>
-      ))}
+      </div>
     </nav>
   );
 }
