@@ -1,6 +1,6 @@
 // Archivo: src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import ControlDePedidos from './pages/ControlDePedidos';
@@ -30,6 +30,7 @@ const menuItems = [
   { label: 'Ensayos Calidad PVC', path: '/ensayos-calidad-pvc' },
   { label: 'Informe de Vidrios', path: '/informe-de-vidrios' },
   { label: 'Clientes', path: '/clientes' },
+
 ];
 
 function App() {
@@ -49,11 +50,10 @@ function App() {
             <Route path="/pedidos-a-proveedores" element={<PedidosAProveedores />} />
             <Route path="/pedidos-felman-aluminio" element={<PedidosFelmanAluminio />} />
             <Route path="/pedidos-felman-vidrio" element={<PedidosFelmanVidrio />} />
-            <Route path="/settings" element={<Settings />} />
             <Route path="/ensayos-calidad-pvc" element={<EnsayosCalidadPVC />} />
             <Route path="/informe-de-vidrios" element={<InformeDeVidrios />} />
             <Route path="/clientes" element={<Clientes />} />
-
+            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
       </div>

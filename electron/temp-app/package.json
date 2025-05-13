@@ -1,0 +1,7 @@
+{
+  "name": "app-felman-electron",
+  "version": "1.0.0",
+  "description": "Aplicación de escritorio Felman App",
+  "author": "Tu Nombre <tucorreo@ejemplo.com>",
+  "main": "main.js"
+}

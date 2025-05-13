@@ -1,16 +1,26 @@
 {
   "name": "app-felman-electron",
   "version": "1.0.0",
+  "description": "Aplicación de escritorio Felman App",
+  "author": "Tu Nombre <tucorreo@ejemplo.com>",
   "main": "main.js",
   "scripts": {
+    "dev": "concurrently \"cd ../frontend && npm run dev\" \"cross-env NODE_ENV=development electron .\"",
+    "start:prod": "npm run build-frontend && cross-env NODE_ENV=production electron .",
     "start": "cross-env NODE_ENV=development electron .",
-    "build": "cd ../frontend && npm run build",
+    "kill-electron": "taskkill /IM electron.exe /F || echo \"no electron.exe running\"",
+    "clean": "rimraf dist",
+    "build-backend": "cd ../backend && npm install",
+    "build-frontend": "cd ../frontend && npm run build",
+    "build": "npm run build-backend && npm run build-frontend",
     "pack": "npm run build && electron-builder --dir",
-    "dist": "npm run build && electron-builder"
+    "dist": "npm run kill-electron && npm run clean && npm run build && electron-builder"
   },
   "build": {
     "appId": "com.felman.app",
     "productName": "Felman App",
+    "asar": false,
+    "forceCodeSigning": false,
     "win": {
       "target": [
         "nsis"
@@ -21,22 +31,40 @@
       "output": "dist",
       "buildResources": "assets"
     },
-    "files": [
-      "main.js",
-      "preload.js",
-      "../frontend/dist/**/*"
-    ],
+   "files": [
+  "main.js",
+  "preload.js",
+  {
+    "from": "../frontend/dist",
+    "to": "dist"
+  },
+  {
+    "from": "../backend",
+    "to": "backend"
+  }
+],
     "extraResources": [
+      {
+        "from": "../backend/",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      },
       {
         "from": "resources",
         "to": "biblioteca",
-        "filter": ["**/*"]
+        "filter": [
+          "**/*"
+        ]
       }
     ]
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "electron": "^26.0.0",
-    "electron-builder": "^24.0.0"
+    "electron-builder": "^24.0.0",
+    "rimraf": "^6.0.1"
   }
 }
